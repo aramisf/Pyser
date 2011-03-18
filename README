@@ -1,0 +1,9 @@
+Pyser - A python parser for DXF Files.
+Author: Aramis S. H. Fernandes
+
+github.com/aramisf
+
+This parser intents to offer an interface for programs that want to take table
+information on tables described into DXF files.
+This parser does not take graphics or drawings.
+
