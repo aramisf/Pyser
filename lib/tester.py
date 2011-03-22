@@ -3,9 +3,14 @@
 # This program is just a simple interface. The main program should use the
 # libs in this directory.
 
-from DXFDefinitions import *
+import DXFDefinitions as DXFdefs
+from sys import argv as sys_argv
 
-# It is not working yet, but this should be called approximately like this:
-f = open("../examples/ex1.dxf")
+if len(sys_argv) != 2:
+    raise Exception
+else:
+    print "Abrindo arquivo",sys_argv[1]
+    f = open(sys_argv[1])
 
-TABLES(f)
+
+DXFdefs.TEXT(f)
