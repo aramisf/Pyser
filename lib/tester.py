@@ -13,4 +13,4 @@ else:
     f = open(sys_argv[1])
 
 
-DXFdefs.TEXT(f)
+DXFdefs.TABLES(f)

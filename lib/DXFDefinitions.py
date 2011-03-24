@@ -7,36 +7,31 @@ class TABLES(object):
        other (probably) relevant information from VPORT section.'''
 
     def __init__(self,filePointer):
-        self.tables = []
-        self.texts = []
-        self.vports = []
+        self.TABLES = []
+        self.TEXTS = []
+        self.VPORTS = []
         self.fields = dict.fromkeys(['TABLES','TEXT','VPORT'],[])
-        line = filePointer.next()
+        line = filePointer.readline()
 
-        while line != 'EOF':
+        while line != '':
             line = line.strip()
 
             while not line in self.fields:
-                try:
-                    line = filePointer.next()
-     
-                except StopIteration:
-                    filePointer.close()
+                line = filePointer.readline().strip()
 
-            if line.strip() == 'TEXT':
-                self.texts.append(TEXT(filePointer))
+            if line == 'TEXT':
+                self.TEXTS.append(TEXT(filePointer))
         
 #            elif line.strip() == 'TABLE':
-#                self.tables.append(TABLE(filePointer))
+#                self.TABLES.append(TABLE(filePointer))
 # 
 #            elif line.strip() == 'VPORT':
-#                self.vports.append(VPORT(filePointer))
+#                self.VPORTS.append(VPORT(filePointer))
 
-            # At the end of processing, append the list to the dict.
-            self.fields[line] = filePointer.next().strip()
+            line = filePointer.readline()
+            
 
-            line = filePointer.next()
-
+        print "Encontrei ",len(self.TEXTS)," tags TEXT"
 
 
 #class TABLE(object):
@@ -46,24 +41,24 @@ class TABLES(object):
 #    def __init__(self,filePointer):
 #        # TODO: Check specs
 #        #self.tableSymbols = dict.fromkeys(['10','20','1'],'')
-#        line = filePointer.next()
+#        line = filePointer.readline()
 #        print "line: '",line,"'"
 # 
 #        #if line == '  0\r\n':
 # 
 #        while line != '  0\r\n':
 #            if line.strip() in self.tableSymbols:
-#                self.tableSymbols[line.strip()] = filePointer.next().strip()
+#                self.tableSymbols[line.strip()] = filePointer.readline().strip()
 #                print "table symbols",self.tableSymbols
 # 
 #            try:
-#                line = filePointer.next()
+#                line = filePointer.readline()
 #                print "line2: '",line,"'"
 # 
 #            except StopIteration:
 #                filePointer.close()
 # 
-#        line = filePointer.next()
+#        line = filePointer.readline()
 
 
 class TEXT(object):
@@ -77,24 +72,19 @@ class TEXT(object):
 
     def __init__(self,filePointer):
         self.textSymbols = dict.fromkeys(['10','20','1'],'')
-        line = filePointer.next()
-        print "line: '",line,"'"
+        line = filePointer.readline()
 
         while line != '  0\r\n':
             line = line.strip()
 
             if line in self.textSymbols:
-                self.textSymbols[line] = filePointer.next().strip()
-                print "table symbols",self.tableSymbols
+                self.textSymbols[line] = filePointer.readline().strip()
+                print "table symbols",self.textSymbols
 
-            try:
-                line = filePointer.next()
-                print "line2: '",line,"'"
+                line = filePointer.readline()
 
-            except StopIteration:
-                filePointer.close()
 
-        line = filePointer.next()
+        line = filePointer.readline()
 
   
 
@@ -105,18 +95,18 @@ class TEXT(object):
 #    def __init__(self,filePointer):
 #        # TODO: Check specs
 #        #self.vportSymbols = dict.fromkeys(['10','20','1'],'')
-#        line = filePointer.next()
+#        line = filePointer.readline()
 #
 #        while line != '  0\r\n':
 #            if line.strip() in self.vportSymbols:
-#                self.vportSymbols[line.strip()] = filePointer.next().strip()
+#                self.vportSymbols[line.strip()] = filePointer.readline().strip()
 #                print self.vportSymbols
 #
 #            try:
-#                line = filePointer.next()
+#                line = filePointer.readline()
 #
 #            except StopIteration:
 #                filePointer.close()
 #
-#        line = filePointer.next()
+#        line = filePointer.readline()
 
