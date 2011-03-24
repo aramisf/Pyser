@@ -5,5 +5,8 @@ github.com/aramisf
 
 This parser intents to offer an interface for programs that want to take table
 information on tables described into DXF files.
-This parser does not take graphics or drawings.
+
+This parser does not take graphics or drawings. And it will probably filter
+only information contained into tables. This should work as a tool for people
+who works with AutoCAD and spreadsheets.
 
