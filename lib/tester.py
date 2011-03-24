@@ -13,4 +13,10 @@ else:
     f = open(sys_argv[1])
 
 
-DXFdefs.TABLES(f)
+# Constructing a table:
+MyTab = DXFdefs.TABLES(f)
+
+# Trying to print its values:
+for i in MyTab.TEXTS:
+    print i.textSymbols,"\n"
+
