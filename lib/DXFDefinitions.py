@@ -16,7 +16,7 @@ class TABLES(object):
         while line != '':
             line = line.strip()
 
-            while not line in self.fields:
+            while not line in self.fields and line != '':
                 line = filePointer.readline().strip()
 
             if line == 'TEXT':
@@ -27,11 +27,10 @@ class TABLES(object):
 # 
 #            elif line.strip() == 'VPORT':
 #                self.VPORTS.append(VPORT(filePointer))
-
             line = filePointer.readline()
             
 
-        print "Encontrei ",len(self.TEXTS)," tags TEXT"
+        print "Found ",len(self.TEXTS)," TEXT tags"
 
 
 #class TABLE(object):
@@ -66,7 +65,7 @@ class TEXT(object):
     ''' This class receives finds the following data:
     Column: 10
     Line: 20
-    Value: 10
+    Value: 1
     inside a TEXT section of a DXF file. This class should be created only
     when a TEXT section is found in DXF file.'''
 
@@ -79,12 +78,8 @@ class TEXT(object):
 
             if line in self.textSymbols:
                 self.textSymbols[line] = filePointer.readline().strip()
-                print "table symbols",self.textSymbols
 
-                line = filePointer.readline()
-
-
-        line = filePointer.readline()
+            line = filePointer.readline()
 
   
 
