@@ -9,7 +9,7 @@ from sys import argv as sys_argv
 if len(sys_argv) != 2:
     raise Exception
 else:
-    print "Abrindo arquivo",sys_argv[1]
+    print "Opening file",sys_argv[1]
     f = open(sys_argv[1])
 
 
