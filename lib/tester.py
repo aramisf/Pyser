@@ -14,7 +14,7 @@ else:
 
 
 # Constructing a table:
-MyTab = DXFdefs.TABLES(f)
+MyTab = DXFdefs.ENTITIES(f)
 
 # Trying to print its values:
 for i in MyTab.TEXTS:
