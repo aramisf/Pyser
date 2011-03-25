@@ -13,7 +13,7 @@ class ENTITIES(object):
         # job.
         self.sections = ['ENTITIES'] # ,'TABLES','BLOCKS']
         self.subSections = ['TEXT']
-        self.foundGreater = False
+        self.sectionFound = False
         self.TEXTS = []
 
         line = filePointer.readline().strip()
@@ -22,8 +22,8 @@ class ENTITIES(object):
             while not line in self.sections and line != '':
                 line = filePointer.readline().strip()
 
-            self.foundGreater = True
-            while self.foundGreater and line != '':
+            self.sectionFound = True
+            while self.sectionFound and line != '':
                 line = filePointer.readline().strip()
 
                 while not line in self.subSections and line != '':
@@ -33,7 +33,7 @@ class ENTITIES(object):
                     self.TEXTS.append(TEXT(filePointer))
 
                 if line == 'ENDSEC':
-                    self.foundGreater = False
+                    self.sectionFound = False
 
             line = filePointer.readline().strip()
             
