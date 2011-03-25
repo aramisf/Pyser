@@ -5,33 +5,28 @@ class ENTITIES(object):
     subsection;'''
 
     # Check this out and you'll be able to improve the code, if you need to
-    # use it for more purposes. At this moment, I'm interested into parse only
-    # text fields, contained into tables drawn onto AutoCAD.
-
+    # use it for other purposes. At this moment, I'm interested into parse only
+    # text fields, contained into tables drawn on AutoCAD.
     def __init__(self,filePointer):
-        self.TEXTS = []
-
         # You should check http://o.mk/2b4f for DXF specifications, or search
         # for it over the internet. In my case, this structures will do the
         # job.
-        self.greaterFields = ['ENTITIES'] # ,'TABLES','BLOCKS']
-        self.minorFields = ['TEXT']
-
+        self.sections = ['ENTITIES'] # ,'TABLES','BLOCKS']
+        self.subSections = ['TEXT']
         self.foundGreater = False
+        self.TEXTS = []
 
         line = filePointer.readline().strip()
-
         while line != '':
 
-            while not line in self.greaterFields and line != '':
+            while not line in self.sections and line != '':
                 line = filePointer.readline().strip()
 
             self.foundGreater = True
-
             while self.foundGreater and line != '':
                 line = filePointer.readline().strip()
 
-                while not line in self.minorFields and line != '':
+                while not line in self.subSections and line != '':
                     line = filePointer.readline().strip()
 
                 if line == 'TEXT':
@@ -43,18 +38,14 @@ class ENTITIES(object):
             line = filePointer.readline().strip()
             
 
-#        print "Found ",len(self.TEXTS)," TEXT tags"
-
-
-
 class TEXT(object):
 
-    ''' This class receives finds the following data:
-    Column: 10
-    Line: 20
-    Value: 1
-    inside a TEXT section of a DXF file. This class should be created only
-    when a TEXT section is found in DXF file.'''
+    ''' This class finds the following data:
+    Column: 10;
+    Line: 20;
+    Value: 1;
+    inside a TEXT subsection of a DXF file. This class should be created only
+    when a TEXT subsection is found in a DXF file.'''
 
     def __init__(self,filePointer):
         self.textSymbols = dict.fromkeys(['10','20','1'],'')
@@ -71,11 +62,10 @@ class TEXT(object):
 
 #class TABLE(object):
 # 
-#    ''' TODO: Add description'''
+#    '''<description here>'''
 # 
 #    def __init__(self,filePointer):
-#        # TODO: Check specs
-#        #self.tableSymbols = dict.fromkeys(['10','20','1'],'')
+#        self.tableSymbols = dict.fromkeys(['key1','key2','key3'],'')
 #        line = filePointer.readline()
 #        print "line: '",line,"'"
 # 
