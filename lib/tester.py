@@ -17,6 +17,4 @@ else:
 MyTab = DXFdefs.ENTITIES(f)
 
 # Trying to print its values:
-for i in MyTab.TEXTS:
-    print i.textSymbols,"\n"
-
+MyTab.printto()

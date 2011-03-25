@@ -36,7 +36,20 @@ class ENTITIES(object):
                     self.sectionFound = False
 
             line = filePointer.readline().strip()
-            
+
+
+    def printto(self):
+
+        currentLine = self.TEXTS[0].textSymbols['20']
+        print "Linha:", currentLine
+        for i in range(self.TEXTS.__len__()):
+            if self.TEXTS[i].textSymbols['20'] == currentLine:
+                print "%s\t" % (self.TEXTS[i].textSymbols['1']),
+            else:
+                currentLine = self.TEXTS[i].textSymbols['20']
+                print "\n"
+
+
 
 class TEXT(object):
 
