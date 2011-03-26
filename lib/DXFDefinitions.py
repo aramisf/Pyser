@@ -15,14 +15,14 @@ class ENTITIES(object):
         self.subSections = ['TEXT']
         self.sectionFound = False
         self.TEXTS = []
-
         line = filePointer.readline().strip()
+
         while line != '':
 
             while not line in self.sections and line != '':
                 line = filePointer.readline().strip()
-
             self.sectionFound = True
+
             while self.sectionFound and line != '':
                 line = filePointer.readline().strip()
 
@@ -34,14 +34,13 @@ class ENTITIES(object):
 
                 if line == 'ENDSEC':
                     self.sectionFound = False
-
             line = filePointer.readline().strip()
 
     def sortcolumns(self):
-
         self.columns = []
 
         for i in range(self.TEXTS.__len__()):
+
             if not self.TEXTS[i].textSymbols['10'] in self.columns:
                 self.columns.append(self.TEXTS[i].textSymbols['10'])
 
@@ -49,16 +48,17 @@ class ENTITIES(object):
 
 
     def printto(self):
-
         currentLine = self.TEXTS[0].textSymbols['20']
-        columnslist = self.sortcolumns()
-
+        columnsList = self.sortcolumns()
 
         if i == 0 and self.TEXTS[i].textSymbols['10'] < currentColumn:
             print "\t"
+
         for i in range(self.TEXTS.__len__()):
+
             if self.TEXTS[i].textSymbols['20'] == currentLine:
                 print "%s  " % (self.TEXTS[i].textSymbols['1']),
+
             else:
                 currentLine = self.TEXTS[i].textSymbols['20']
                 print "\n"
@@ -83,7 +83,6 @@ class TEXT(object):
 
             if line in self.textSymbols:
                 self.textSymbols[line] = filePointer.readline().strip()
-
             line = filePointer.readline()
 
 
@@ -96,9 +95,8 @@ class TEXT(object):
 #        line = filePointer.readline()
 #        print "line: '",line,"'"
 # 
-#        #if line == '  0\r\n':
-# 
 #        while line != '  0\r\n':
+# 
 #            if line.strip() in self.tableSymbols:
 #                self.tableSymbols[line.strip()] = filePointer.readline().strip()
 #                print "table symbols",self.tableSymbols
@@ -109,6 +107,5 @@ class TEXT(object):
 # 
 #            except StopIteration:
 #                filePointer.close()
-# 
 #        line = filePointer.readline()
 
