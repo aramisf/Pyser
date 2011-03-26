@@ -37,14 +37,28 @@ class ENTITIES(object):
 
             line = filePointer.readline().strip()
 
+    def sortcolumns(self):
+
+        self.columns = []
+
+        for i in range(self.TEXTS.__len__()):
+            if not self.TEXTS[i].textSymbols['10'] in self.columns:
+                self.columns.append(self.TEXTS[i].textSymbols['10'])
+
+        return self.columns.sort()
+
 
     def printto(self):
 
         currentLine = self.TEXTS[0].textSymbols['20']
-        print "Linha:", currentLine
+        columnslist = self.sortcolumns()
+
+
+        if i == 0 and self.TEXTS[i].textSymbols['10'] < currentColumn:
+            print "\t"
         for i in range(self.TEXTS.__len__()):
             if self.TEXTS[i].textSymbols['20'] == currentLine:
-                print "%s\t" % (self.TEXTS[i].textSymbols['1']),
+                print "%s  " % (self.TEXTS[i].textSymbols['1']),
             else:
                 currentLine = self.TEXTS[i].textSymbols['20']
                 print "\n"
