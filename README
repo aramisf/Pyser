@@ -10,3 +10,9 @@ This parser does not take graphics or drawings. And it will probably filter
 only information contained into tables. This should work as a tool for people
 who works with AutoCAD and spreadsheets.
 
+You'll be able to improve the code, if you need to use it for other
+purposes. At this moment, I'm interested into parse only text fields,
+contained into tables drawn on AutoCAD.
+
+You should check http://o.mk/2b4f for DXF specifications, or search for it
+over the internet. In my case, the structures I'm using will do the job.
