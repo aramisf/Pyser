@@ -7,19 +7,19 @@
 
 # Creates a table from a TEXT subsection
 class TextTable(object):
-    self.columns = []
-    self.lines = []
-    self.textTable = {}
 
     def __init__(self,subSecList):
+        self.columns = []
+        self.lines = []
+        self.textTable = {}
 
         for i in range(subSecList.__len__()):
 
-            if not subSecList[i].symbols['10'] in self.columns:
-                self.columns.append(subSecList[i].symbols['10'])
+            if not subSecList[i].textSymbols['10'] in self.columns:
+                self.columns.append(subSecList[i].textSymbols['10'])
 
-            if not subSecList[i].symbols['20'] in self.lines:
-                self.lines.append(subSecList[i].symbols['20'])
+            if not subSecList[i].textSymbols['20'] in self.lines:
+                self.lines.append(subSecList[i].textSymbols['20'])
 
         self.columns.sort()
         self.lines.sort()
@@ -34,7 +34,7 @@ class TextTable(object):
             self.textTable[i] = dict.fromkeys(self.columns,' ')
 
 
-    def fillTable(self,subSectList):
+    def fillTable(self,subSecList):
 
         for i in range(subSecList.__len__()):
             self.textTable[subSecList[i].textSymbols['20']][subSecList[i].textSymbols['10']]=subSecList[i].textSymbols['1']

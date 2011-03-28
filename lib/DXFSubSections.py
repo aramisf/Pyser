@@ -10,9 +10,8 @@ class TEXT(object):
         Value: 1;
     '''
 
-    self.textSymbols = {}
-
     def __init__(self,filePointer):
+        #self.textSymbols = {}
         self.textSymbols = dict.fromkeys(['10','20','1'],'')
         line = filePointer.readline()
 
