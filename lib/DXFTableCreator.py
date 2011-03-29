@@ -5,6 +5,7 @@
 # create a table containing all elements inside that section. In our
 # specific case, ENTITIES section with lots of TEXT subsections inside of it.
 
+from re import sub as rename
 # Creates a table from a TEXT subsection
 class TextTable(object):
 
@@ -40,6 +41,18 @@ class TextTable(object):
             self.textTable[subSecList[i].textSymbols['20']][subSecList[i].textSymbols['10']]=subSecList[i].textSymbols['1']
 
 
-    #def printto(self):
+    def printto(self,fileName):
 
-        # TODO: Print the final table to files and to stdout
+        if not fileName:
+            raise Error("No DXF file name given!")
+
+        f = open(fileName,'r')
+        g = open(rename("\.dxf$",".txt",f.name),'w')
+
+        for i in self.lines:
+            for j in self.columns:
+                g.write(self.textTable[i][j]+'  ')
+            g.write('\n')
+
+        g.close()
+        f.close()

@@ -28,4 +28,5 @@ MyTab = tabcreator.TextTable(EntitiesList.subSections['TEXT'])
 
 # MyTab should be ready for printing =)
 # but I'm not gonna test it today.
-print MyTab.textTable
+#print "x"+MyTab.textTable[MyTab.lines[7]][MyTab.columns[4]]+"x"
+MyTab.printto(f.name)
